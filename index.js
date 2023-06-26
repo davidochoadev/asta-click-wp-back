@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
     res.send("Benvenuto nel server Express!");
   });
 
-  app.get("/Data/export_piemonte.csv", (req, res) => {
-    const filePath = path.join(process.cwd(), "data", "export_piemonte.csv");
+  app.get("/Data/export_lombardia.csv", (req, res) => {
+    const filePath = path.join(process.cwd(), "data", "export_lombardia.csv");
   
     // Read the file contents
     fs.readFile(filePath, (err, data) => {
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
       } else {
         // Set the appropriate headers for CSV response
         res.setHeader("Content-Type", "text/csv");
-        res.setHeader("Content-Disposition", "attachment; filename=export_piemonte.csv");
+        res.setHeader("Content-Disposition", "attachment; filename=export_lombardia.csv");
   
         // Send the file contents as the response
         res.send(data);

@@ -5,7 +5,7 @@ export const performSearch = async (req, res) => {
     const search = new Search(search_config, 0, 10, 12);
     try {
         await search.doSearch();
-        await search.doClusterDataCollection("export_piemonte");
+        await search.doClusterDataCollection("export_lombardia");
         // Handle success and send the response
         res.status(200).json({ message: "Search performed successfully" });
     } catch (err) {
