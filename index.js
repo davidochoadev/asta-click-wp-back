@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
     }).then(res.status(200).send("Successful Download!"));
   });
   
-  app.get("/search", performSearch);
+app.get("/search", performSearch);
 
 app.listen(process.env.PORT || 8000, ()=>{
     console.log("Backend started")
