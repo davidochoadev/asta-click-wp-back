@@ -202,6 +202,7 @@ export default class Search{
     }
 
     async doSearch(){
+        console.log("Starting Search...");
         var oldAuctionData = await this.getDuplicates()
         var url = this.fabricateQuery(this.config.location, this.config.items_per_page)
         const browser = await puppeteer.launch({headless: !this.debugMode})
