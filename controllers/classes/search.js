@@ -29,6 +29,7 @@ export default class Search{
     }
     //auction_threshold, auction_end_threshold
     fabricateQuery(){
+        console.log("Fabricate Query to pvp.giustizia...");
         return `https://pvp.giustizia.it/pvp/it/risultati_ricerca.page?tipo_bene=immobili&categoria=&geo=geografica&nazione=ITA&regione=${region_index[this.config.location]}&localita=&indirizzo=&prezzo_da=&prezzo_a=&tribunale=&procedura=&anno=&idInserzione=&ricerca_libera=&disponibilita=&ordinamento=data_pub_decre&ordine_localita=a_z&view=tab&elementiPerPagina=${this.config.items_per_page}&frame4_item=1`
     }
 
@@ -153,6 +154,7 @@ export default class Search{
     }
     
     async getDuplicates() {
+        console.log("Starting get duplicates");
         var oldAuctionData = []
         await fsPromises.readFile('Temp/temp.json', { encoding: "utf-8" })
             .then(response => oldAuctionData = JSON.parse(response))
@@ -162,6 +164,7 @@ export default class Search{
     }
 
     async doClusterDataCollection(file_name){
+        console.log("Starting Cluster Data Collection...");
         const cluster = await Cluster.launch({
             concurrency: Cluster.CONCURRENCY_PAGE,
             maxConcurrency: this.threads_num,
