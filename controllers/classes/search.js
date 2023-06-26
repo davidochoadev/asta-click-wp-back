@@ -208,7 +208,7 @@ export default class Search{
         console.log("Starting Search...");
         var oldAuctionData = await this.getDuplicates()
         var url = this.fabricateQuery(this.config.location, this.config.items_per_page)
-        const browser = await puppeteer.launch({headless: !this.debugMode})
+        const browser = await puppeteer.launch({headless: !this.debugMode}).catch(err => console.log(err))
         this.mainPage = await browser.newPage()
         await this.mainPage.goto(url, {waitUntil: 'networkidle2'})
         var currentPage = 1
