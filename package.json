@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "chromium" : "node node_modules/puppeteer/install.js",
-    "build": "npm run chromium"
+    "start": "node node_modules/puppeteer/install.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,11 +14,5 @@
     "json2csv": "^6.0.0-alpha.2",
     "puppeteer": "^19.7.2",
     "puppeteer-cluster": "^0.23.0"
-  },
-  "builds": [
-    { "src": "index.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/(.*)", "dest": "index.js" }
-  ]
+  }
 }

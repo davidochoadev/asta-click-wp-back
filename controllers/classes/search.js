@@ -19,7 +19,7 @@ export default class Search{
         const csvFields = Object.keys(data[0])
         const parser = new JSON2CSVParser({fields: csvFields, delimiter: ";"})
         var csvData = parser.parse(data)
-        await fsPromises.writeFile(`./Data/${toFileName}.csv`, csvData, (err) =>{
+        await fsPromises.writeFile(`./data/${toFileName}.csv`, csvData, (err) =>{
             if(err) {
                 console.log(err)
                 return 0
