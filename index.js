@@ -37,7 +37,7 @@ app.get("/data/export_lombardia.csv", (req, res) => {
 
 app.get("/search", performSearch);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
