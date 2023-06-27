@@ -1,7 +1,7 @@
 import express from "express";
 import cors from 'cors';
-import corsOptions from "./config/corsOptions.js";
-import { performSearch } from "./controllers/searchController.js";
+import corsOptions from "../config/corsOptions.js";
+import { performSearch } from "../controllers/searchController.js";
 import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Benvenuto nel server Express!");
 });
 
@@ -35,7 +35,7 @@ app.get("/data/export_lombardia.csv", (req, res) => {
   });
 });
 
-app.get("/search", performSearch);
+app.get("/api/search", performSearch);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
