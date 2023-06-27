@@ -3,7 +3,6 @@ import puppeteer from 'puppeteer'
 import { Cluster } from 'puppeteer-cluster'
 import JSON2CSVParser from 'json2csv/lib/JSON2CSVParser.js'
 import { region_index } from '../dataController.js'
-import chromium from 'chrome-aws-lambda';
 
 export default class Search{
 
@@ -210,13 +209,7 @@ export default class Search{
         console.log("Starting Search...");
         var oldAuctionData = await this.getDuplicates()
         var url = this.fabricateQuery(this.config.location, this.config.items_per_page)
-        const browser = await chromium.puppeteer.launch({
-            args: [...chromium.args, "--hide-scrollbars", "--disable-web-security"],
-            defaultViewport: chromium.defaultViewport,
-            executablePath: await chromium.executablePath,
-            headless: !this.debugMode,
-            ignoreHTTPSErrors: true
-        }).catch(err => console.log(err))
+        const browser = await puppeteer.launch({headless: !this.debugMode}).catch(err => console.log(err))
         this.mainPage = await browser.newPage()
         await this.mainPage.goto(url, {waitUntil: 'networkidle2'})
         var currentPage = 1
