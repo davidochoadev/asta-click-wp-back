@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "scripts": {
+    "chromium" : "node node_modules/puppeteer/install.js",
+    "build": "npm run chromium"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -18,5 +22,4 @@
   "routes": [
     { "src": "/(.*)", "dest": "index.js" }
   ]
-
 }
